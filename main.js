@@ -76,17 +76,27 @@ function snakeEyes() {
   // Display Menu Title
   outputEl.innerHTML = "<h3>ROLL UNTIL SNAKE EYES</h3>";
 
-  rollDie = Math.floor(Math.random() * 6) + 1;
+  let attempt = 0;
 
-  let die1 = 0;
-  let die2 = 0;
-  let attempts = 0;
+  while (true) {
+    attempt += 1;
 
-  while (die1 === 1 && die2 === 1) {
-    die1 = rollDie();
-    die2 = rollDie();
-    attempts += 1;
-    console.log(`Rolled: ${dice1} ${dice2}`);
+    // Random Dice Roll & Total
+    let die1 = Math.floor(Math.random() * 6) + 1;
+    let die2 = Math.floor(Math.random() * 6) + 1;
+    let total = die1 + die2;
+
+    let iRollDice = document.createElement("p");
+    iRollDice.innerHTML = `${die1},${die2} (sum: ${total})`;
+    outputEl.appendChild(iRollDice);
+
+    // Stop Loop
+    if (total === 2) {
+      break;
+    }
   }
-  console.log(`It took you ${attempts} rolls to get snake eyes.`);
 }
+
+
+
+  
